@@ -4,6 +4,7 @@
 ### Install docker-compose
 
 ```
+docker volume create n8n_data
 docker-compose up --build -d
 
 # to get name of container get the last column of n8n cointaner
