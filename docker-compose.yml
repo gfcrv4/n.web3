@@ -2,8 +2,12 @@ version: "3.7"
 
 services:
   n8n:
-    n
-    image: docker.n8n.io/n8nio/n8n
+    build:
+      context: ./n8n
+      dockerfile: Dockerfile
+      args:
+        N8N_VERSION: "1.49.0"
+    container_name: n8n
     restart: always
     ports:
       - "127.0.0.1:5678:5678"

@@ -1,0 +1,88 @@
+{
+  "name": "Test workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "10b65ec6-8cd1-42b9-aa1c-cb56a9a29a18",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        700,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1d0813fb-0304-4a58-bf4e-0c959b41c43a",
+              "name": "wallet_address",
+              "value": "0x6422Df9B4a20862a3b360439eE0feb7c8B974036",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2103ba5e-7f31-40e8-8b08-04aaa104a9a9",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        880,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const { Web3 } = require('web3');\n\nconst web3 = new Web3(\"https://mainnet.infura.io/v3/fc4e8aa2367a4bd1a684391753d53986\");\n\nasync function getTransactionCount(address) {\n  try {\n    const count = await web3.eth.getTransactionCount(address);\n    return count;\n  } catch (error) {\n    console.error(error);\n    return null;\n  }\n}\n\nconst results = [];\n\nfor (const item of $input.all()) {\n  const transactionCount = await getTransactionCount(item.json.wallet_address);\n  item.json.wallet_transactions = transactionCount;\n  results.push(item);\n}\n\nreturn results;"
+      },
+      "id": "1f415163-db68-4249-8eba-70ce2893bcd1",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        380
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b217fd05-d798-4a92-9369-e56fd4285edd",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "f1fc950514871f93f930723f37cc9b8527372729e6e01c357ebc1be287b89c3a"
+  },
+  "id": "uEpIyZ85RosQWVSQ",
+  "tags": []
+}
