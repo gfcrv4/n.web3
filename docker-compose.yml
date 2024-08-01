@@ -16,7 +16,7 @@ services:
       - N8N_PROTOCOL=http
       - NODE_ENV=production
       - GENERIC_TIMEZONE=Europe/Berlin
-      - NODE_FUNCTION_ALLOW_EXTERNAL=moment,lodash,web3
+      - NODE_FUNCTION_ALLOW_EXTERNAL=moment,lodash,web3,ccxt
     volumes:
       - n8n_data:/home/node/.n8n
 
