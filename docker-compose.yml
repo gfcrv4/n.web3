@@ -14,8 +14,8 @@ services:
     environment:
       - N8N_HOST=116.203.81.44
       - N8N_PORT=5678
-      - WEBHOOK_URL=http://116.203.81.44:5678/
-      - N8N_PROTOCOL=http
+      - WEBHOOK_URL=https://116.203.81.44:5678/
+      - N8N_PROTOCOL=https
       - NODE_ENV=production
       - GENERIC_TIMEZONE=Europe/Berlin
       - NODE_FUNCTION_ALLOW_EXTERNAL=moment,lodash,web3,ccxt
