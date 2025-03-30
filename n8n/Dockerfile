@@ -23,6 +23,7 @@ RUN set -eux; \
   rm -rf /root/.npm
 RUN npm install -g web3
 RUN npm install -g ccxt
+RUN npm install -g ethers
 COPY docker-entrypoint.sh /
 
 RUN \
