@@ -19,7 +19,7 @@ services:
       - NODE_ENV=production
       - GENERIC_TIMEZONE=Europe/Berlin
       - EXECUTIONS_PROCESS=20
-      - NODE_FUNCTION_ALLOW_EXTERNAL=moment,lodash,web3,ccxt
+      - NODE_FUNCTION_ALLOW_EXTERNAL=moment,lodash,web3,ccxt,ethers
     volumes:
       - n8n_data:/home/node/.n8n
 
