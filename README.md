@@ -41,3 +41,38 @@ Or you can import test workflow from workflows folder.
 
 
 Open browser console and see results
+
+
+___ 
+
+docker-compose.yml old 
+version: "3.7"
+
+services:
+  n8n:
+    build:
+      context: ./n8n
+      dockerfile: Dockerfile
+      args:
+        N8N_VERSION: "1.84.3"
+    container_name: n8n
+    restart: always
+    ports:
+      - "0.0.0.0:5678:5678"
+    environment:
+      - N8N_HOST=x.pogorelyi.com
+      - N8N_PORT=5678
+      - WEBHOOK_URL=https://x.pogorelyi.com/
+      - N8N_PROTOCOL=https
+      - NODE_ENV=production
+      - GENERIC_TIMEZONE=Europe/Berlin
+      - NODE_FUNCTION_ALLOW_BUILTIN=https,crypto
+      - NODE_FUNCTION_ALLOW_EXTERNAL=moment,lodash,web3,ccxt,ethers
+      - EXECUTIONS_PROCESS_MAX=4
+      - EXECUTIONS_MODE=process
+    volumes:
+      - n8n_data:/home/node/.n8n
+
+volumes:
+  n8n_data:
+    external: true
