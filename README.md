@@ -67,9 +67,7 @@ services:
       - NODE_ENV=production
       - GENERIC_TIMEZONE=Europe/Berlin
       - NODE_FUNCTION_ALLOW_BUILTIN=https,crypto
-      - NODE_FUNCTION_ALLOW_EXTERNAL=moment,lodash,web3,ccxt,ethers
-      - EXECUTIONS_PROCESS_MAX=4
-      - EXECUTIONS_MODE=process
+      - NODE_FUNCTION_ALLOW_EXTERNAL=moment,lodash,web3,ccxt,ethers,axios,@clickhouse/client
     volumes:
       - n8n_data:/home/node/.n8n
 
