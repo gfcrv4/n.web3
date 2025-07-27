@@ -24,6 +24,8 @@ RUN set -eux; \
 RUN npm install -g web3
 RUN npm install -g ccxt
 RUN npm install -g ethers
+RUN npm install -g axios
+RUN npm install -g @clickhouse/client
 COPY docker-entrypoint.sh /
 
 RUN \
