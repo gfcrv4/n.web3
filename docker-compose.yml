@@ -40,9 +40,9 @@ services:
     volumes:
       - postgres-volume-n8n:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: "DB_POSTRES_PASSWORD_HERE"
-      POSTGRES_USER: "DB_POSTGRES_USERNAME_HERE"
-      POSTGRES_DB: "n8n_production"
+      POSTGRES_PASSWORD: DB_POSTRES_PASSWORD_HERE
+      POSTGRES_USER: DB_POSTGRES_USERNAME_HERE
+      POSTGRES_DB: n8n_production
     networks:
       - n8n_network
 
