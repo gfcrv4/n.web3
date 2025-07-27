@@ -19,7 +19,6 @@ services:
       - NODE_ENV=production
       - N8N_PUSH_BACKEND=websocket
       - GENERIC_TIMEZONE=Europe/Berlin
-      - EXECUTIONS_PROCESS=20
       - NODE_FUNCTION_ALLOW_EXTERNAL=moment,lodash,web3,ccxt,ethers
       - DB_TYPE=postgresdb
       - DB_POSTGRESDB_HOST=postgres
