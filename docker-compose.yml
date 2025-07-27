@@ -20,9 +20,36 @@ services:
       - GENERIC_TIMEZONE=Europe/Berlin
       - EXECUTIONS_PROCESS=20
       - NODE_FUNCTION_ALLOW_EXTERNAL=moment,lodash,web3,ccxt,ethers
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=postgres
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_DATABASE=n8n_production
+      - DB_POSTGRESDB_USER=DB_POSTGRES_USERNAME_HERE
+      - DB_POSTGRESDB_PASSWORD=DB_POSTRES_PASSWORD_HERE
+    depends_on:
+      - postgres
     volumes:
       - n8n_data:/home/node/.n8n
+    networks:
+      - n8n_network
+  postgres:
+    image: postgres:16.2
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-volume-n8n:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: "DB_POSTRES_PASSWORD_HERE"
+      POSTGRES_USER: "DB_POSTGRES_USERNAME_HERE"
+      POSTGRES_DB: "n8n_production"
+    networks:
+      - n8n_network
 
 volumes:
   n8n_data:
-    external: true
+  postgres-volume-n8n:
+
+networks:
+  n8n_network:
+    driver: bridge
