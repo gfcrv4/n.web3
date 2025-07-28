@@ -6,7 +6,7 @@ services:
       context: ./n8n
       dockerfile: Dockerfile
       args:
-        N8N_VERSION: "1.84.3"
+        N8N_VERSION: "1.103.2"
     container_name: n8n
     restart: always
     ports:
@@ -19,7 +19,7 @@ services:
       - NODE_ENV=production
       - N8N_PUSH_BACKEND=websocket
       - GENERIC_TIMEZONE=Europe/Berlin
-      - NODE_FUNCTION_ALLOW_EXTERNAL=moment,lodash,web3,ccxt,ethers
+      - NODE_FUNCTION_ALLOW_EXTERNAL=moment,lodash,web3,ccxt,ethers,axios,@clickhouse/client
       - DB_TYPE=postgresdb
       - DB_POSTGRESDB_HOST=postgres
       - DB_POSTGRESDB_PORT=5432
