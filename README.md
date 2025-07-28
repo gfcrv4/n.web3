@@ -46,6 +46,8 @@ Open browser console and see results
 ___ 
 
 docker-compose.yml old 
+
+```
 version: "3.7"
 
 services:
@@ -74,3 +76,4 @@ services:
 volumes:
   n8n_data:
     external: true
+```
